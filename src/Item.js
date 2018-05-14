@@ -6,16 +6,12 @@ import './grid.css';
 export class Item extends Component {
     constructor(props) {
         super(props);
-        this.state = {
-            count: 0
-        }
-
         this.handleClick = this.handleClick.bind(this);
     }
 
     handleClick() {
         this.props.clickHandler();
-        console.log(this.props.count);
+        console.log(this.props.price);
     }
 
     render() {
