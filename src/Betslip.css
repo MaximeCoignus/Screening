@@ -1,0 +1,141 @@
+/* -------------------------------------
+*  ----------- DROPDOWN MENU -----------
+*  ------------------------------------- */
+.banner {	
+	background-color: #000;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	margin-top: 10%;
+	margin-bottom: 0;
+	margin: 10% 0 0 40%;
+	padding-top: 10px;
+	width: 15%;
+}
+
+.stakes {
+	float: left;
+	padding-left: 10px;
+	background-color: #e67e22;
+  	color: #fff;
+  	padding: 12px 15px;
+  	margin: -10px 8px 0 8px;
+}
+
+.heading {
+	display: inline-block;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-size: 80%;
+	color: #fff;
+	padding-bottom: 15px;
+}
+
+.arrow {
+	float: right;
+	text-decoration: none;
+	color: #fff;
+	background-color: transparent;
+	border-color: transparent;
+  	margin-right: 10px;
+}
+
+.betslip {
+	background-color: #e3e3e3;
+}
+
+/* -------------------------------------
+*  ---------------- BETS ---------------
+*  ------------------------------------- */
+.item {
+	margin: 0;
+	padding: 10px 0;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+}
+
+.logo {
+	text-align: center;
+	color: #e67e22;
+}
+
+.event {
+	font-size: 70%;
+}
+
+.odd {
+	display: block;
+	text-decoration: none;
+	text-align: center;
+	font-size: 80%;
+	color: #000;
+	border: 1px solid #000;
+	padding: 5px 10px;
+	margin: 0 10px 0 0;
+}
+
+.odd:hover,
+.odd:active {
+	background-color: #000;
+	color: #e67e22;
+}
+
+/* -------------------------------------
+*  ------------ MULTISTAKE -------------
+*  ------------------------------------- */
+.multi-stake ul {
+	list-style: none;
+	padding-left: 10px;
+	display: inline-block;
+}
+
+.multi-stake li {
+	display: inline;
+	padding: 0;
+	margin: 0;
+}
+
+.multi-stake li button {
+	display: inline;
+    padding: 5px 10px;
+    margin-right: 10px;
+	border: 1px solid #000;
+	font-size: 70%;
+	text-decoration: none;
+	color: #000;
+}
+
+.multi-stake button:hover,
+.multi-stake button:active {
+	border-color: #e67e22;
+}
+
+.result {
+	margin: 0;
+	padding: 10px 0;
+	border-left: 1px solid #000;
+	border-right: 1px solid #000;
+	border-bottom: 1px solid #000;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+}
+
+.clear {
+	float: right;
+	padding-right: 10px;
+	margin-top: 4px;
+	display: inline;
+}
+
+.clear button {
+	text-decoration: none;
+	color: #e67e22;
+	border-color: transparent;
+	background-color: transparent;
+}
+
+.clear button:hover,
+.clear button:active {
+	background-color: transparent;
+	border-color: transparent;
+}
