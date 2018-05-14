@@ -4,16 +4,6 @@ import './Betslip.css';
 import './grid.css';
 
 export class Item extends Component {
-    constructor(props) {
-        super(props);
-        this.handleClick = this.handleClick.bind(this);
-    }
-
-    handleClick() {
-        this.props.clickHandler();
-        console.log(this.props.price);
-    }
-
     render() {
         return (
             <div className="item">
@@ -23,10 +13,10 @@ export class Item extends Component {
                     </div>
                     <div className="col span-2-of-4 event">
                     <strong>{ this.props.player }</strong><br/>
-                    <small>[Location] [Time]</small>
+                    <small>London 16:30</small>
                     </div>
                     <div className="col span-1-of-4">
-                    <button onClick={this.handleClick} className="odd">{ this.props.price }</button>
+                    <button className="odd">{ this.props.odd }</button>
                     </div>
                 </div>
             </div>
