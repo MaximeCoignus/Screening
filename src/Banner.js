@@ -3,8 +3,8 @@ import './grid.css';
 import './Betslip.css';
 import Ionicon from 'react-ionicons';
 import './normalize.css';
-import { ItemList } from './ItemList';
 import { players } from './players';
+import { Item } from './Item';
 
 export class Banner extends Component {
     constructor(props) {
@@ -12,8 +12,8 @@ export class Banner extends Component {
 
         this.state = {
             showBetslip: false,
-            count: 0,
-            total: 0
+            hasBeenClicked:  false,
+            count: 0
         }
 
         this.upCount = this.upCount.bind(this);
@@ -21,12 +21,17 @@ export class Banner extends Component {
         this.closeBetSlip = this.closeBetSlip.bind(this);
     }
 
+    // Increment/Decrement the counter
     upCount() {
-        this.setState((prevState, props) => ({
-            count: prevState.count === 0 ? 1 : 0
-        }));
-    }
+        if(this.state.hasBeenClicked === false) {
+            this.setState({count: this.state.count+1, hasBeenClicked: true});
+        } else if (this.state.hasBeenClicked === true) {
+            this.setState({count : this.state.count-1, hasBeenClicked: false});
+        }
+        
+    } 
 
+    // Print Dropdown List
     showBetslip(e) {
         e.preventDefault();
 
@@ -35,6 +40,7 @@ export class Banner extends Component {
         });
     }
 
+    // Hide Dropdown List
     closeBetSlip(e) {
         if (this.dropdownMenu.contains(e.target)) {
             this.setState({ showBetslip: false }, () => {
@@ -44,9 +50,18 @@ export class Banner extends Component {
     }
 
     render() {
+        
+        const allPlayers = players.map((user, i) => {
+            return <Item 
+                clickHandler = { this.upCount } 
+                key={i}
+                player={players[i].player}
+                price={players[i].price} />;
+        })
+
         return (
             <div className="banner">
-                <p className="stakes"><strong>{ this.state.total }</strong></p>
+                <p className="stakes"><strong>{ this.state.count }</strong></p>
                 <p className="heading">Bet Slip</p>
                 {
                     this.state.showBetslip
@@ -69,22 +84,8 @@ export class Banner extends Component {
                 {
                     this.state.showBetslip
                     ? (
-                        //<ItemList clickHandler={this.upCount} players={players} />
                         <section className="betslip">
-                            <div className="item">
-                                <div className="row">
-                                    <div className="col span-1-of-4 logo">
-                                    <Ionicon icon="ios-tennisball" color= "#e67e22"></Ionicon>
-                                    </div>
-                                    <div className="col span-2-of-4 event">
-                                    <strong>{ players[0].player }</strong><br/>
-                                    <small>[Location] [Time]</small>
-                                    </div>
-                                    <div className="col span-1-of-4">
-                                    <button onClick={this.handleClick} className="odd">{ players[0].price }</button>
-                                    </div>
-                                </div>
-                            </div>
+                            { allPlayers }
                         </section>
                     )
                     : (
