@@ -5,6 +5,7 @@ import { Item } from './Item';
 export class ItemList extends Component {
     constructor(props) {
         super(props);
+        
         this.handleClick = this.handleClick.bind(this);
     }
 
