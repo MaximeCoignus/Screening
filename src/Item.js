@@ -16,7 +16,7 @@ export class Item extends Component {
                     <small>London 16:30</small>
                     </div>
                     <div className="col span-1-of-4">
-                    <button className="odd">{ this.props.odd }</button>
+                    <p className="odd">{ this.props.odd }</p>
                     </div>
                 </div>
             </div>
