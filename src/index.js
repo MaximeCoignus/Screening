@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import Betslip2 from './Betslip2';
+import Betslip from './Betslip';
 import registerServiceWorker from './registerServiceWorker';
 
-ReactDOM.render(<Betslip2 />, document.getElementById('root'));
+ReactDOM.render(<Betslip />, document.getElementById('root'));
 registerServiceWorker();

@@ -3,9 +3,7 @@ import './grid.css';
 import './Betslip.css';
 import Ionicon from 'react-ionicons';
 import './normalize.css';
-import { players } from './players';
-import { Item } from './Item';
-import { Price } from './Price';
+import { BettingSlip } from './BettingSlip';
 
 export class Banner extends Component {
     constructor(props) {
@@ -13,19 +11,12 @@ export class Banner extends Component {
 
         this.state = {
             showBetslip: false,
-            hasBeenClicked:  false,
-            count: 0,
-            greyButtons: [
-                {status: 0, value: players[0].price },
-                {status: 0, value: players[1].price},
-                {status: 0, value: players[2].price},
-                {status: 0, value: players[3].price}
-            ]
+            greyButtons: [],
+            clicked: false
         }
 
         this.emptyStakes = this.emptyStakes.bind(this);
         this.greyButtonClickHandler = this.greyButtonClickHandler.bind(this);
-        this.upCount = this.upCount.bind(this);
         this.showBetslip = this.showBetslip.bind(this);
         this.closeBetSlip = this.closeBetSlip.bind(this);
     }
@@ -33,6 +24,11 @@ export class Banner extends Component {
     greyButtonClickHandler = index => event => {
         const { greyButtons } = this.state;
         greyButtons[index].status = 1 - greyButtons[index].status;
+        if (greyButtons[index].status === 0) {
+            this.setState({ clicked: false });
+        } else {
+            this.setState({ clicked: true });
+        }
         this.setState({ greyButtons });
     }
 
@@ -43,16 +39,6 @@ export class Banner extends Component {
         });
         this.setState({ greyButtons });
     }
-
-    // Increment/Decrement the counter
-    upCount() {
-        if(this.state.hasBeenClicked === false) {
-            this.setState({count: this.state.count+1, hasBeenClicked: true});
-        } else if (this.state.hasBeenClicked === true) {
-            this.setState({count : this.state.count-1, hasBeenClicked: false});
-        }
-        
-    } 
 
     // Print Dropdown List
     showBetslip(e) {
@@ -72,15 +58,17 @@ export class Banner extends Component {
         }
     }
 
+    componentDidMount() {
+        const { greyButtons } = this.state;
+        this.props.values.map(player => {
+            greyButtons.push({status: 0, value: player.price })
+        });
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+    }
+
     render() {
-        
-        const allPlayers = players.map((user, i) => {
-            return <Item 
-                clickHandler = { this.upCount } 
-                key={i}
-                player={players[i].player}
-                odd={players[i].odd} />;
-        })
 
         const { greyButtons } = this.state;
 
@@ -108,11 +96,9 @@ export class Banner extends Component {
                 }
                 {
                     this.state.showBetslip
-                    ? (
+                    ? (                        
                         <div>
-                            <section className="betslip">
-                                { allPlayers }
-                            </section>
+                            <BettingSlip values={this.props.values}/>
                             <section className="multi-stake">
                                 <div className="result">
                                     <ul>
